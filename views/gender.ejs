@@ -1,0 +1,31 @@
+<%- include ('templates/header'); -%>
+    <div class='container'>
+        <div class='jumbotron'>
+        <h1>SEARCH QUOTE BY GENDER</h1>
+        <nav class="navbar navbar-light" style="background-color: #fbd4ab;">
+		  <form class="form-inline">
+		  	 <a href='/authorName'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Name</button></a>
+		    <a href='/c'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Category</button></a>
+		    <a href='/k'><button  style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Keyword</button></a>
+		    <a href='/g'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Gender</button></a>
+		  </form>
+		</nav>
+		<form action="/genderSearch" method='GET'>
+    		 <div class="form-check">
+              <input class="form-check-input" type="radio" value="M" name="gender" id="defaultCheck1" checked>
+              <label class="form-check-label" for="defaultCheck1">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" value="F" name="gender" id="defaultCheck2">
+              <label class="form-check-label" for="defaultCheck2">
+                Female
+              </label>
+            </div> 
+             <button type="submit" class="btn btn-dark">Search</button>
+            </form>
+        </div>
+    </div>
+
+<%- include ('templates/footer'); -%>

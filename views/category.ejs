@@ -1,0 +1,31 @@
+<%- include ('templates/header'); -%>
+    <div class='container'>
+        <div class='jumbotron'>
+        <h1>SEARCH QUOTE BY CATEGORY</h1>
+        <nav class="navbar navbar-light" style="background-color: #fbd4ab;">
+		  <form class="form-inline">
+		  	 <a href='/authorName'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Name</button></a>
+		    <a href='/c'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Category</button></a>
+		    <a href='/k'><button  style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Keyword</button></a>
+		    <a href='/g'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Gender</button></a>
+		  </form>
+		</nav>
+		<form action="/categorySearch" method='GET'>
+    		<select type="text" class="form-control" name="topic">
+                        <option> Inspirational </option>
+                        <option> Motivational </option>
+                        <option> Life </option>
+                        <option> Wisdom </option>
+                        <option> Freedom </option>
+                        <option> Moral </option>
+                        <option> inpirational </option>
+                        <option> inspiration </option>
+                        <option> Inspirational</option>
+                        <option> Liberty </option>
+                 </select>
+                 <button type="submit" class="btn btn-dark">Search</button>
+            </form>
+        </div>
+    </div>
+
+<%- include ('templates/footer'); -%>

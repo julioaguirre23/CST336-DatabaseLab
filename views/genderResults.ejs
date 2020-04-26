@@ -1,0 +1,68 @@
+<%- include ('templates/header'); -%>
+    <div class='container'>
+        <div class='jumbotron'>
+        <h1>SEARCH QUOTE BY GENDER</h1>
+        <nav class="navbar navbar-light" style="background-color: #fbd4ab;">
+		  <form class="form-inline">
+		  	 <a href='/authorName'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Name</button></a>
+		    <a href='/c'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Category</button></a>
+		    <a href='/k'><button  style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Keyword</button></a>
+		    <a href='/g'><button style="margin:5px;" class="btn btn-lg btn-outline-primary" type="button">Gender</button></a>
+		  </form>
+		</nav>
+		<form action="/genderSearch" method='GET'>
+		      <div class="form-check">
+              <input class="form-check-input" type="radio" value="M" name="gender" id="defaultCheck1"checked>
+              <label class="form-check-label" for="defaultCheck1">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" value="F" name="gender" id="defaultCheck2">
+              <label class="form-check-label" for="defaultCheck2">
+                Female
+              </label>
+            </div> 
+             <button type="submit" class="btn btn-dark">Search</button>
+            </form>
+            <% input.forEach(function(q){%>
+             <li>
+                <%=q.quote%>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%=q.firstName%>">
+                  <%=q.firstName + ' ' + q.lastName%>
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="<%=q.firstName%>"tabindex="-1" role="dialog" aria-labelledby="#<%=q.lastName%>" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="<%=q.lastName%>">Author Info </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                         <img class='col-sm-4 portrait' src=<%=q.portrait%> />
+                        <div class='info'>
+            		        <h3><%=q.firstName%> <%=q.lastName%></h3>
+            		        <div>Born: <%=q.dob.toISOString().split("T").splice(0,1)%></div>
+            		        <div>Dead: <%=q.dod.toISOString().split("T").splice(0,1)%></div>
+            		        <div>Sex: <%=q.sex%></div>
+            		        <div>Profession: <%=q.profession%></div>
+            		        <div>Country: <%=q.country%></div>
+            		        <div class='bio'><%=q.biography%></div>
+                    	</div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </li>
+        <% }); %>
+        </div>
+    </div>
+
+<%- include ('templates/footer'); -%>
